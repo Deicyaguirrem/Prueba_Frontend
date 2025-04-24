@@ -57,54 +57,58 @@ AppPruebaTecnica
 │── package.json
 │── .gitignore
 
+## Pruebas Unitarias
 
-<<<<<<< HEAD
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Para garantizar la calidad y estabilidad del código, se han implementado pruebas unitarias utilizando Jest y React Testing Library.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Propósito de las pruebas  
+Las pruebas verifican el correcto funcionamiento de los componentes y lógica del proyecto, asegurando que los datos se rendericen y manejen de manera adecuada.
 
-### `npm run eject`
+### Herramientas utilizadas  
+- Jest: Framework de pruebas en JavaScript.  
+- React Testing Library: Librería enfocada en pruebas de componentes React de manera accesible y funcional.  
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Estructura de las pruebas  
+Las pruebas se encuentran en la siguiente ubicación dentro del proyecto:  
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+AppPruebaTecnica
+│── public/
+│── src/
+│   ├── assets/  
+│   ├── controller/  
+│   │    ├── appController.js
+│   │    ├── appController.test.js # Prueba unitaria de appController.js
+│   ├── model/  
+│   │    ├── dataDTO.js
+│   │    ├── dataDTO.test.js  # Prueba unitaria de dataDTO.js
+│   │    ├── dataModel.js
+│   │    ├── dataModel.test.js # Prueba unitaria de dataModel.js
+│   ├── service/ 
+│   │    ├── apiService.js
+│   │    ├── apiService.test.js # Prueba unitaria de apiService.js   
+│   ├── view/ 
+│   │    ├── dataList.jsx
+│   │    ├── dataList.test.js  #Prueba unitaria de dataList.js      
+│   ├── App.js
+│   ├── App.test.js
+│   ├── index.js
+│── README.md
+│── package.json
+│── .gitignore
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Ejecutar las pruebas  
+Para correr las pruebas unitarias en el proyecto, usa el siguiente comando:  
+```bash
+npm test nombre del archivo que desea correr.
 
-## Learn More
+Cobertura esperada
+Pruebas de renderizado de componentes. 
+Validación de interacciones con la UI. 
+Simulación de llamadas a la API y manejo de respuestas. 
+Manejo de errores y datos faltantes.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
->>>>>>> 72315eb (Initialize project using Create React App)
-=======
 Licencia
 Este proyecto es de uso libre para fines de evaluación.
->>>>>>> b966aed (Implementación sin pruebas unitarias)
+
