@@ -2,6 +2,7 @@ import { render, screen, waitFor } from '@testing-library/react';
 import App from './App';
 import * as apiService from "./service/apiService";
 
+// Prueba de integración 
 jest.mock("./service/apiService"); 
 
 beforeEach(() => {
