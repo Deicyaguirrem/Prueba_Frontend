@@ -109,6 +109,45 @@ Simulación de llamadas a la API y manejo de respuestas.
 Manejo de errores y datos faltantes.
 
 
+Prueba de Integración
+Se implementó una prueba de integración para validar el comportamiento de App.js al obtener y renderizar datos desde una API simulada.
+
+Objetivo:
+Verificar que la aplicación carga correctamente los datos de fetchData y los muestra en la interfaz de usuario.
+
+Enfoque de la prueba:
+Se utilizó Jest y React Testing Library para simular la llamada a la API.
+Se mockeó la función fetchData usando jest.mock(), asegurando que la prueba no dependa de la API real.
+Se verificó que los datos obtenidos se rendericen correctamente en la interfaz.
+Código de prueba (App.test.js)
+import { render, screen, waitFor } from '@testing-library/react';
+import App from './App';
+import * as apiService from "./service/apiService";
+
+jest.mock("./service/apiService");
+
+beforeEach(() => {
+  apiService.fetchData.mockResolvedValue([
+    { id: 1, name: "John Doe", email: "johndoe@example.com" },
+    { id: 2, name: "Jane Smith", email: "janesmith@example.com" },
+  ]);
+});
+
+test("Carga y muestra datos correctamente desde la API", async () => {
+  render(<App />);
+
+  await waitFor(() => expect(screen.getByText("John Doe")).toBeInTheDocument());
+  await waitFor(() => expect(screen.getByText("Jane Smith")).toBeInTheDocument());
+});
+
+
+Resultados:
+Se comprobó que los datos simulados se mostraban correctamente en la aplicación.
+Se verificó que la API es mockeada correctamente para evitar dependencias externas.
+Se manejaron correctamente las actualizaciones de estado durante la prueba.
+Esta prueba ayuda a garantizar la estabilidad de la aplicación y su interacción con los datos de la API.
+
+
 Licencia
 Este proyecto es de uso libre para fines de evaluación.
 
