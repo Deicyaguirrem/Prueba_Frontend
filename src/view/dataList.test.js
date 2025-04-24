@@ -16,26 +16,30 @@ describe("DataList Component", () => {
 
     test("Filtra usuarios correctamente", async () => {
         render(<DataList />);
-
+    
+        // Esperar que el estado de carga desaparezca antes de buscar usuarios
+        await waitFor(() => screen.queryByText(/Cargando datos/i) === null);
+    
+        // Ahora buscar "Leanne Graham" en la tabla
+        const userElement = await screen.findByText("Leanne Graham");
+        expect(userElement).toBeInTheDocument();
+    
         // Simular búsqueda en el input
         const input = screen.getByPlaceholderText("Buscar usuario...");
         fireEvent.change(input, { target: { value: "Leanne" } });
-
-        // Esperar que el usuario filtrado aparezca en la pantalla
-        await waitFor(() => {
-            expect(screen.getByText("Leanne Graham")).toBeInTheDocument();
-        });
+    
+        // Verificar que el usuario filtrado aparece en pantalla
+        await screen.findByText("Leanne Graham");
     });
 
     test("Abre y cierra el modal correctamente", async () => {
-        const mockUsers = [{ id: 1, name: "Leanne Graham" }, { id: 2, name: "Juan" }];
-        render(<DataList users={mockUsers} />);  // Pasamos los datos manualmente
+        render(<DataList />);
     
-        // Esperar que los datos aparezcan en la tabla antes de interactuar
-        await waitFor(() => expect(screen.getByText("Leanne Graham")).toBeInTheDocument());
+        // Esperar a que los datos se carguen antes de interactuar
+        const userElement = await screen.findByText("Leanne Graham");
+        expect(userElement).toBeInTheDocument();
     
         // Simular clic en el usuario para abrir el modal
-        const userElement = screen.getByText("Leanne Graham");
         fireEvent.click(userElement);
     
         // Verificar que el modal se muestra con información correcta
@@ -48,4 +52,5 @@ describe("DataList Component", () => {
         // Verificar que el modal ya no está presente
         await waitFor(() => expect(screen.queryByText("Detalles de Leanne Graham")).not.toBeInTheDocument());
     });
+    
 });
